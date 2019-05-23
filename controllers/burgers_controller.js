@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger.js");
+var burger = require("../config/models/burger.js");
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
   });
   
   router.post("/api/burgers", function(req, res) {
-    cat.create(["burger_name", "devoured"], [req.body.burger_name, false], function(result) {
+    burger.create(["burger_name", "devoured"], [req.body.burger_name, false], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
